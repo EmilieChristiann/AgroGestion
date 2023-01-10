@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Fiche de l'employé";
+}
+
+<h1>Fiche de l'employé</h1>
+
+@model AgroGestion.Models.Employee
+
+
+<div class="mb-3">
+    <label class="form-label">Nom</label>
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+</div>
+<div class="mb-3">
+    <label class="form-label">Prénom</label>
+    @Html.TextBoxFor(model => model.Surname, new { @class = "form-control" })
+</div>
+<div class="mb-3">
+    <label class="form-label">Téléphone</label>
+    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+</div>
+<div class="mb-3">
+    <label class="form-label">Email</label>
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Site</label>
+    @Html.TextBoxFor(model => model.Site.Ville, new { @class = "form-control" })
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Service</label>
+    @Html.TextBoxFor(model => model.Service.Type, new { @class = "form-control" })
+</div>
+

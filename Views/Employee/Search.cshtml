@@ -1,0 +1,61 @@
+@{
+    ViewData["Title"] = "Rechercher employés";
+    IEnumerable<Site> sites = ViewData["Sites"] as IEnumerable<Site>;
+    IEnumerable<Service> services = ViewData["Services"] as IEnumerable<Service>;
+}
+
+@model List<AgroGestion.Models.Employee>
+
+<h1>Rechercher employés</h1>
+<h2>Formulaire</h2>
+
+@using (var form = Html.BeginForm("Search", "Employee", FormMethod.Post))
+{
+    <div class="mb-3">
+        <label class="form-label">Nom</label>
+        @Html.TextBox("Name", "", new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Site</label>
+        @Html.DropDownList("SiteId", new SelectList(sites, "Id", "Ville"), new { @class = "form-select" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Service</label>
+        @Html.DropDownList("ServiceId", new SelectList(services, "Id", "Type"), new { @class = "form-select" })
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Rechercher" />
+}
+
+
+<h2>Résultat</h2>
+
+<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Site</th>
+        <th>Service</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@employee.Name</td>
+            <td>@employee.Surname</td>
+            <td>@employee.Phone</td>
+            <td>@employee.Email</td>
+            <td>@employee.Site.Ville</td>
+            <td>@employee.Service.Type</td>
+            <td>
+                @Html.ActionLink("Consulter", "Consult", new { id = employee.Id }) |
+                @Html.ActionLink("Modifier", "Edit", new { id = employee.Id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = employee.Id })
+            </td>
+        </tr>
+    }
+</table>

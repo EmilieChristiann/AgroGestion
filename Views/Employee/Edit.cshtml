@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Modifier l'employé";
+    IEnumerable<Site> sites = ViewData["Sites"] as IEnumerable<Site>;
+    IEnumerable<Service> services = ViewData["Services"] as IEnumerable<Service>;
+}
+
+<h1>Modifier l'employé</h1>
+
+@model AgroGestion.Models.Employee
+
+@using (var form = Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+    <div class="mb-3">
+        <label class="form-label">Nom</label>
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Prénom</label>
+        @Html.TextBoxFor(model => model.Surname, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Téléphone</label>
+        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Site</label>
+        @Html.DropDownListFor(model => model.SiteId, new SelectList(sites, "Id", "Ville"), new { @class = "form-select" })
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Service</label>
+        @Html.DropDownListFor(model => model.ServiceId, new SelectList(services, "Id", "Type"), new { @class = "form-select" })
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Modifier" />
+}

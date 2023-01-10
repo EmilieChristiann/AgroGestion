@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Service";
+}
+
+<h1>Service</h1>
+
+
+@model List<AgroGestion.Models.Service>
+
+<table class="table">
+    <tr>
+        <th>Type</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var service in Model)
+    {
+        <tr>
+            <td>
+                @service.Type
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id = service.Id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = service.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Ajouter", "Create")

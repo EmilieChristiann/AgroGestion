@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Modifier le service";
+}
+
+<h1>Modifier le service</h1>
+
+@model AgroGestion.Models.Service
+
+@using (var form = Html.BeginForm("Edit", "Service", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.EditorFor(model => model.Type)
+    @Html.ValidationMessageFor(model => model.Type)
+    <input type="submit" value="Modifier" />
+}

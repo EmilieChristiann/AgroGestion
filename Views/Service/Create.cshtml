@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Nouveau service";
+}
+
+<h1>Nouveau service</h1>
+
+@model AgroGestion.Models.Service
+
+@using (var form = Html.BeginForm("Create", "Service", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.Type, new { placeholder = "Type" })
+    <input type="submit" value="Ajouter" />
+}

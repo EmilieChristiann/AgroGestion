@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Site";
+}
+
+<h1>Site</h1>
+
+
+@model List<AgroGestion.Models.Site>
+
+<table class="table">
+    <tr>
+        <th>Ville</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var site in Model)
+    {
+        <tr>
+            <td>
+                @site.Ville
+            </td>
+            <td>
+                @Html.ActionLink("Modifier", "Edit", new { id = site.Id }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = site.Id })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Ajouter", "Create")
